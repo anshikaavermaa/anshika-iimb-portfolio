@@ -1,0 +1,1492 @@
+/* ==========================================================================
+   ANSHIKA VERMA — PERSONAL PORTFOLIO & RESUME
+   Clean, Minimal & Elegant Editorial Portfolio
+   Pure HTML5 & CSS3 — Zero JavaScript or Frameworks
+   Palette: Warm Ivory, Soft Beige, Sage Green, Forest Green, Muted Terracotta, Charcoal
+   Typography: Playfair Display (Serif), DM Sans (Body), Poppins (UI/Labels)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & CSS VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+  /* Palette */
+  --warm-ivory: #F7F4ED;
+  --warm-ivory-alt: #F2EFE8;
+  --soft-beige: #EAE5DA;
+  --soft-beige-dark: #DDD6C7;
+  
+  --sage-green: #A8B5A0;
+  --sage-dark: #586B52;
+  --sage-light: #EEF3EC;
+  --sage-tint: rgba(168, 181, 160, 0.25);
+  
+  --forest-green: #263C35;
+  --forest-dark: #192823;
+  --forest-light: rgba(38, 60, 53, 0.08);
+  
+  --muted-terracotta: #D9A58F;
+  --terracotta-dark: #A65D44;
+  --terracotta-light: #FAF0EB;
+  --terracotta-tint: rgba(217, 165, 143, 0.25);
+  
+  --charcoal: #2C2B27;
+  --charcoal-muted: #484640;
+  --charcoal-light: #65635C;
+
+  /* Borders & Surfaces */
+  --border-subtle: rgba(44, 43, 39, 0.12);
+  --border-beige: #D8D1C2;
+  --surface-white: #FFFFFF;
+  --surface-card: #FAF8F3;
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Shadows */
+  --shadow-subtle: 0 2px 8px rgba(44, 43, 39, 0.04);
+  --shadow-card: 0 6px 20px rgba(44, 43, 39, 0.06);
+  --shadow-hover: 0 12px 28px rgba(38, 60, 53, 0.10);
+
+  /* Layout */
+  --max-width: 1140px;
+  --nav-height: 80px;
+  --transition-fast: 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--warm-ivory);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Subtle top accent line */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--forest-green), var(--sage-green), var(--muted-terracotta), var(--forest-green));
+  z-index: 1100;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, .serif-heading {
+  font-family: var(--font-serif);
+  color: var(--forest-green);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 4.6vw, 3.6rem);
+  margin-bottom: 1.2rem;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  margin-bottom: 0.8rem;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+p {
+  margin-bottom: 1.2rem;
+  color: var(--charcoal);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.hero-intro {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--charcoal);
+  margin-bottom: 1.5rem;
+}
+
+.editorial-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--terracotta-dark);
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT CONTAINERS
+   -------------------------------------------------------------------------- */
+.container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.main-content {
+  flex: 1 0 auto;
+  padding-bottom: 5rem;
+}
+
+.section-padding {
+  padding: 4.5rem 0;
+}
+
+.section-padding-top {
+  padding-top: 4rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. LABELS, BADGES & BUTTONS
+   -------------------------------------------------------------------------- */
+.kicker-label {
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.kicker-label.iim-label {
+  background-color: var(--terracotta-light);
+  color: var(--terracotta-dark);
+  border: 1px solid rgba(217, 165, 143, 0.4);
+}
+
+.badge-pill {
+  font-family: var(--font-ui);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border: 1px solid transparent;
+}
+
+.badge-pill.sage {
+  background-color: var(--sage-light);
+  color: var(--forest-green);
+  border-color: rgba(168, 181, 160, 0.5);
+}
+
+.badge-pill.terracotta {
+  background-color: var(--terracotta-light);
+  color: var(--terracotta-dark);
+  border-color: rgba(217, 165, 143, 0.5);
+}
+
+.badge-pill.beige {
+  background-color: var(--soft-beige);
+  color: var(--forest-green);
+  border-color: var(--border-beige);
+}
+
+.badge-pill.forest {
+  background-color: var(--forest-green);
+  color: var(--warm-ivory);
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  font-family: var(--font-ui);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--forest-green);
+  color: var(--warm-ivory);
+  border-color: var(--forest-green);
+}
+
+.btn-primary:hover {
+  background-color: var(--forest-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(38, 60, 53, 0.25);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--forest-green);
+  border-color: var(--forest-green);
+}
+
+.btn-secondary:hover {
+  background-color: var(--forest-green);
+  color: var(--warm-ivory);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   6. SITE HEADER & NAVIGATION
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: rgba(247, 244, 237, 0.96);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--forest-green);
+}
+
+.brand-tag {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--charcoal-light);
+  font-weight: 600;
+  border-left: 1px solid var(--border-subtle);
+  padding-left: 0.6rem;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.nav-link {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--charcoal-muted);
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--forest-green);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--forest-green);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--forest-green);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  background-color: var(--forest-green);
+}
+
+.nav-cta {
+  padding: 0.5rem 1.15rem;
+  font-size: 0.78rem;
+  background-color: var(--forest-light);
+  border: 1px solid var(--forest-green);
+  border-radius: 999px;
+  color: var(--forest-green);
+}
+
+.nav-cta:hover {
+  background-color: var(--forest-green);
+  color: var(--warm-ivory);
+}
+
+/* Pure CSS Mobile Navigation */
+.nav-toggle-input {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  z-index: 1002;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: var(--forest-green);
+  transition: transform var(--transition-fast), top var(--transition-fast);
+}
+
+.nav-toggle-label span { top: 10px; }
+.nav-toggle-label span::before { top: -8px; }
+.nav-toggle-label span::after { top: 8px; }
+
+/* --------------------------------------------------------------------------
+   7. HOMEPAGE HERO & EDITORIAL PROFILE CARD
+   -------------------------------------------------------------------------- */
+.editorial-hero {
+  padding: 4.5rem 0 3.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-text {
+  max-width: 620px;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Minimal Editorial Profile Card */
+.editorial-frame {
+  position: relative;
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-beige);
+  padding: 1.5rem 1.5rem 2rem;
+  box-shadow: var(--shadow-card);
+  border-radius: 6px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.editorial-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.tape-accent {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--soft-beige);
+  border: 1px dashed rgba(168, 181, 160, 0.7);
+  padding: 0.25rem 1.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--forest-green);
+  font-weight: 600;
+}
+
+.profile-artwork {
+  background: linear-gradient(150deg, #FAF8F2 0%, var(--soft-beige) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 2.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.silhouette-emblem {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: var(--surface-white);
+  border: 2px solid var(--sage-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.monogram-text {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--forest-green);
+  line-height: 1;
+}
+
+.frame-caption {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--forest-green);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.frame-subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--terracotta-dark);
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+}
+
+.frame-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   8. THREE PILLARS (CREATIVITY, COMMUNICATION, LEADERSHIP)
+   -------------------------------------------------------------------------- */
+.pillars-section {
+  background-color: var(--surface-card);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-header-centered {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.pillar-card {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 2.2rem 1.8rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--sage-green);
+}
+
+.pillar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.pillar-number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--terracotta-dark);
+}
+
+.pillar-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.pillar-icon-box.creativity { background-color: var(--terracotta-light); color: var(--terracotta-dark); }
+.pillar-icon-box.communication { background-color: var(--sage-light); color: var(--forest-green); }
+.pillar-icon-box.leadership { background-color: var(--soft-beige); color: var(--forest-green); }
+
+.pillar-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--forest-green);
+  margin-bottom: 0.6rem;
+}
+
+.pillar-desc {
+  font-size: 0.96rem;
+  color: var(--charcoal-muted);
+  line-height: 1.65;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   9. HOMEPAGE PREVIEWS (PROMINENT IIMB & LEADERSHIP)
+   -------------------------------------------------------------------------- */
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.preview-card {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 2.4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.preview-card.featured-preview {
+  background-color: #FAF8F2;
+  border-left: 4px solid var(--forest-green);
+}
+
+.preview-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--forest-green);
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.preview-label {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--terracotta-dark);
+  font-weight: 600;
+}
+
+.preview-institution {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--forest-green);
+  margin-top: 0.2rem;
+}
+
+.preview-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--forest-green);
+  margin-bottom: 0.8rem;
+}
+
+.preview-body {
+  font-size: 0.98rem;
+  color: var(--charcoal-muted);
+  margin-bottom: 1.8rem;
+  flex-grow: 1;
+}
+
+.text-link {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--forest-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 2px solid var(--forest-green);
+  padding-bottom: 2px;
+  align-self: flex-start;
+  transition: all var(--transition-fast);
+}
+
+.text-link:hover {
+  color: var(--terracotta-dark);
+  border-color: var(--terracotta-dark);
+}
+
+/* --------------------------------------------------------------------------
+   10. PAGE BANNER (PAGES 2-6)
+   -------------------------------------------------------------------------- */
+.page-banner {
+  padding: 4rem 0 2.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: linear-gradient(180deg, rgba(234, 229, 218, 0.4) 0%, transparent 100%);
+}
+
+.banner-content {
+  max-width: 800px;
+}
+
+.page-title {
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  color: var(--forest-green);
+  margin-bottom: 0.8rem;
+}
+
+.page-description {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--charcoal-muted);
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   11. ABOUT PAGE
+   -------------------------------------------------------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.about-sidebar-card {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 2.2rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.sidebar-heading {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--forest-green);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.4rem;
+}
+
+.fact-list li {
+  margin-bottom: 1.1rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.fact-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.fact-label {
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--terracotta-dark);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.fact-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--forest-green);
+}
+
+.element-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+
+.element-card {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.4rem;
+  transition: transform var(--transition-fast);
+}
+
+.element-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage-green);
+}
+
+.element-visual {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--soft-beige);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.element-card:nth-child(1) .element-visual { background-color: var(--terracotta-light); }
+.element-card:nth-child(2) .element-visual { background-color: var(--sage-light); }
+.element-card:nth-child(3) .element-visual { background-color: var(--soft-beige); }
+.element-card:nth-child(4) .element-visual { background-color: #E8EEEC; }
+
+.element-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--forest-green);
+  margin-bottom: 0.35rem;
+}
+
+.element-desc {
+  font-size: 0.9rem;
+  color: var(--charcoal-muted);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   12. EDUCATION PAGE (PROMINENT IIMB & CLEAN TIMELINE)
+   -------------------------------------------------------------------------- */
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.edu-card {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 2.4rem;
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.edu-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage-green);
+}
+
+/* Prominent IIMB Education Card */
+.edu-card.prominent-iimb {
+  background-color: #FAF8F2;
+  border-left: 5px solid var(--forest-green);
+  border-color: var(--sage-green);
+  box-shadow: var(--shadow-card);
+}
+
+.edu-year {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--charcoal-muted);
+}
+
+.edu-year .status-tag {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.74rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background-color: var(--forest-green);
+  color: var(--warm-ivory);
+  font-weight: 600;
+}
+
+.edu-details h3 {
+  font-size: 1.55rem;
+  margin-bottom: 0.25rem;
+  color: var(--forest-green);
+}
+
+.edu-institution {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--charcoal-muted);
+  margin-bottom: 0.9rem;
+}
+
+.edu-description {
+  font-size: 0.98rem;
+  color: var(--charcoal);
+  margin-bottom: 1.2rem;
+}
+
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.edu-score-badge {
+  text-align: right;
+  min-width: 120px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
+
+.score-number {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--forest-green);
+  line-height: 1;
+}
+
+.score-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--terracotta-dark);
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. EXPERIENCE PAGE
+   -------------------------------------------------------------------------- */
+.role-hero-card {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 2.8rem;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  border-left: 5px solid var(--forest-green);
+}
+
+.role-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.role-title {
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  color: var(--forest-green);
+  margin-bottom: 0.3rem;
+}
+
+.role-subtitle {
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--terracotta-dark);
+  margin-bottom: 1.4rem;
+}
+
+.role-summary {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+  margin-bottom: 2.2rem;
+}
+
+.responsibilities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.resp-box {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.8rem;
+  transition: transform var(--transition-fast);
+}
+
+.resp-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage-green);
+}
+
+.resp-box-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: var(--forest-green);
+}
+
+.resp-box-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--forest-green);
+  margin-bottom: 0.5rem;
+}
+
+.resp-box-desc {
+  font-size: 0.94rem;
+  color: var(--charcoal-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   14. SKILLS & INTERESTS
+   -------------------------------------------------------------------------- */
+.skills-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.skill-category-block {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 2.5rem;
+}
+
+.category-header {
+  margin-bottom: 1.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.8rem;
+}
+
+.category-header h3 {
+  font-size: 1.6rem;
+  color: var(--forest-green);
+  margin-bottom: 0.2rem;
+}
+
+.category-subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--charcoal-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+}
+
+.tool-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: transform var(--transition-fast);
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--muted-terracotta);
+}
+
+.tool-icon-wrapper {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.tool-name {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--forest-green);
+  margin-bottom: 0.2rem;
+}
+
+.tool-role {
+  font-size: 0.78rem;
+  color: var(--charcoal-muted);
+}
+
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.strength-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.8rem;
+  transition: transform var(--transition-fast);
+}
+
+.strength-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage-green);
+}
+
+.strength-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--forest-green);
+  margin-bottom: 0.4rem;
+}
+
+.strength-desc {
+  font-size: 0.92rem;
+  color: var(--charcoal-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.lang-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.8rem;
+  text-align: center;
+}
+
+.lang-name {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--forest-green);
+  margin-bottom: 0.35rem;
+}
+
+.lang-status {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracotta-dark);
+  font-weight: 600;
+}
+
+.interests-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.interest-tag {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-beige);
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all var(--transition-fast);
+}
+
+.interest-tag:hover {
+  background-color: var(--forest-green);
+  color: var(--warm-ivory);
+  border-color: var(--forest-green);
+  transform: translateY(-2px);
+}
+
+.interest-name {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   15. CONTACT PAGE
+   -------------------------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.contact-card-item {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 1.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.contact-card-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--muted-terracotta);
+}
+
+.contact-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background-color: var(--soft-beige);
+  color: var(--forest-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--terracotta-dark);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.contact-value {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest-green);
+  word-break: break-all;
+}
+
+.contact-value a:hover {
+  color: var(--terracotta-dark);
+}
+
+.contact-subtext {
+  font-size: 0.85rem;
+  color: var(--charcoal-muted);
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.contact-form-panel {
+  background-color: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 2.8rem;
+  box-shadow: var(--shadow-card);
+}
+
+.form-heading {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+  color: var(--forest-green);
+}
+
+.form-intro {
+  font-size: 0.98rem;
+  color: var(--charcoal-muted);
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--forest-green);
+  margin-bottom: 0.4rem;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--charcoal);
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--forest-green);
+  background-color: var(--surface-white);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* --------------------------------------------------------------------------
+   16. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--forest-green);
+  color: var(--warm-ivory);
+  padding: 4.5rem 0 2.5rem;
+  margin-top: auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  color: var(--warm-ivory);
+  margin-bottom: 0.4rem;
+}
+
+.footer-tagline {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-terracotta);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.footer-bio {
+  font-size: 0.92rem;
+  color: rgba(247, 244, 237, 0.88);
+  line-height: 1.65;
+  max-width: 380px;
+}
+
+.footer-col-title {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--sage-green);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.footer-links li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: rgba(247, 244, 237, 0.85);
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--warm-ivory);
+  padding-left: 4px;
+}
+
+.footer-contact-info p {
+  font-size: 0.9rem;
+  color: rgba(247, 244, 237, 0.85);
+  margin-bottom: 0.6rem;
+}
+
+.footer-contact-info a {
+  color: var(--muted-terracotta);
+}
+
+.footer-contact-info a:hover {
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(247, 244, 237, 0.15);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: rgba(247, 244, 237, 0.75);
+  font-family: var(--font-ui);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   17. RESPONSIVENESS
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-visual { order: -1; }
+  .editorial-frame { max-width: 360px; margin: 0 auto; }
+  .pillars-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .preview-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .element-grid { grid-template-columns: repeat(2, 1fr); }
+  .edu-card { grid-template-columns: 1fr; gap: 1.2rem; }
+  .edu-score-badge { text-align: left; display: inline-block; }
+  .responsibilities-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(3, 1fr); }
+  .strengths-grid { grid-template-columns: 1fr; }
+  .languages-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+  :root { --nav-height: 70px; }
+  .nav-toggle-label { display: block; }
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background-color: var(--warm-ivory);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.5rem;
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-130%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-toggle-input:checked ~ .nav-menu {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-toggle-input:checked + .nav-toggle-label span { background-color: transparent; }
+  .nav-toggle-input:checked + .nav-toggle-label span::before { top: 0; transform: rotate(45deg); }
+  .nav-toggle-input:checked + .nav-toggle-label span::after { top: 0; transform: rotate(-45deg); }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .role-hero-card { padding: 2rem 1.5rem; }
+  .skill-category-block { padding: 2rem 1.5rem; }
+  .contact-form-panel { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .element-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .btn-group { flex-direction: column; width: 100%; }
+  .btn { width: 100%; }
+}
